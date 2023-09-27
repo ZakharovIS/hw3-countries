@@ -1,7 +1,7 @@
 package com.example.hw3_countries
 
 object CountryCodes {
-    val countryCodes = mapOf<String,String>(
+    val countryCodes = listOf(
             "ad" to "Andorra",
             "ae" to "United Arab Emirates",
             "af" to "Afghanistan",
