@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.hw3_countries.databinding.ItemCountryBinding
+import java.util.ArrayList
 import java.util.Collections
 
 class CountriesAdapter(private var data: MutableList<Pair<String, String>>) :
@@ -41,7 +42,10 @@ class CountriesAdapter(private var data: MutableList<Pair<String, String>>) :
                 viewHolder: RecyclerView.ViewHolder,
                 target: RecyclerView.ViewHolder
             ): Boolean {
-                Collections.swap(data, viewHolder.adapterPosition, target.adapterPosition)
+
+                //Так как можно перемещать сразу на несколько позиций, то просто swap не катит.
+                data.add(target.adapterPosition, data.removeAt(viewHolder.adapterPosition))
+
                 recyclerView.adapter?.notifyItemMoved(
                     viewHolder.adapterPosition,
                     target.adapterPosition
